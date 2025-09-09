@@ -25,7 +25,7 @@ class StyledCodeWindow(VGroup):
     ):
         super().__init__(**kwargs)
 
-        code = StyledCode(
+        self.code = StyledCode(
             file_path,
             background="window"
         )
@@ -33,12 +33,12 @@ class StyledCodeWindow(VGroup):
         if window_title_text is None:
             window_title_text = os.path.basename(file_path)
 
-        window_title = Text(
+        self.window_title = Text(
             window_title_text,
             font="Inter Variable",
             font_size=22,
             color=LIGHT_GRAY
         )
 
-        window_title.align_to(code, UP).shift(DOWN * 0.15)
-        self.add(code, window_title)
+        self.window_title.align_to(self.code, UP).shift(DOWN * 0.15)
+        self.add(self.code, self.window_title)
